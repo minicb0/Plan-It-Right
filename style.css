@@ -20,6 +20,7 @@ body {
     justify-content: center;
     border: 5px solid black;
     border-radius: 15px;
+    margin: 3px;
 }
 
 #todo {
@@ -27,7 +28,7 @@ body {
     border-top-right-radius: 0px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 0px;
-    background-color: rgb(231, 98, 98);
+    background-color: rgb(247, 146, 146);
     height: 500px;
     /* border: 5px solid red; */
     padding: 5px;
@@ -91,10 +92,14 @@ body {
     overflow-y: auto;
 }
 
-.item {
+.itemDiv {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
+}
+
+.item {
+    width: 100%;
     border-bottom: 2px solid rgb(207, 73, 73);
 }
 
@@ -120,6 +125,8 @@ body {
 
 .delete {
     float: right;
+    margin-top: 13px;
+    margin-right: 10px;
     width: 20px;
     height: 20px;
 }
@@ -128,6 +135,9 @@ body {
     cursor: pointer;
 }
 
+.hide {
+    display: none;
+}
 /* calenderr */
 #calender-nav {
     display: flex;

@@ -184,20 +184,26 @@ function loadList() {
                 checked = ""
                 completed = ""
             }
-
+            if (listLocal[i].trash == true) {
+                var trash = "hide";
+            } else {
+                trash = ""
+            }
             var item =
-            `<li class="item">
+            `<div class="itemDiv"><li class="item ${trash}">
             <input type="checkbox" class="checkbox" ${checked}>
             <span class="text ${completed}">${task}</span>
             <img class="delete" src="delete.png">
-            </li>`;
+            </li></div>`;
 
             taskList.insertAdjacentHTML('beforeend', item);
             taskInput.value = ""
+            
         }
     }
     indicatorFunc();
     checkboxWorking();
+    deleteWorking();
 }
 loadList();
 
@@ -218,11 +224,11 @@ addBtn.addEventListener('click', () => {
         var task = taskInput.value
         // console.log(task);
         var item =
-            `<li class="item">
+            `<div class="itemDiv"><li class="item">
             <input type="checkbox" class="checkbox">
             <span class="text">${task}</span>
             <img class="delete" src="delete.png">
-            </li>`;
+            </li></div>`;
 
         taskList.insertAdjacentHTML('beforeend', item);
         taskInput.value = ""
@@ -231,11 +237,13 @@ addBtn.addEventListener('click', () => {
             id: `${document.getElementsByClassName("dayClicked")[0].textContent}${currentMonth + 1}${currentYear}${task}`,
             date: `${document.getElementsByClassName("dayClicked")[0].textContent}/${currentMonth + 1}/${currentYear}`,
             text: task,
-            checked: false
+            checked: false,
+            trash: false
         });
         localStorage.setItem("todoLocal", JSON.stringify(listLocal))
         indicatorFunc();
         checkboxWorking();
+        deleteWorking();
     }
 })
 
@@ -246,11 +254,11 @@ document.addEventListener("keyup", function (event) {
             var task = taskInput.value
             // console.log(task);
             var item =
-            `<li class="item">
+            `<div class="itemDiv"><li class="item">
             <input type="checkbox" class="checkbox">
             <span class="text">${task}</span>
             <img class="delete" src="delete.png">
-            </li>`;
+            </li></div>`;
 
             taskList.insertAdjacentHTML('beforeend', item);
             taskInput.value = ""
@@ -259,11 +267,13 @@ document.addEventListener("keyup", function (event) {
                 id: `${document.getElementsByClassName("dayClicked")[0].textContent}${currentMonth + 1}${currentYear}${task}`,
                 date: `${document.getElementsByClassName("dayClicked")[0].textContent}/${currentMonth + 1}/${currentYear}`,
                 text: task,
-                checked: false
+                checked: false,
+                trash: false
             });
             localStorage.setItem("todoLocal", JSON.stringify(listLocal))
             indicatorFunc();
             checkboxWorking();
+            deleteWorking();
         }
     }
 })
@@ -297,3 +307,29 @@ function checkboxWorking() {
     }
 }
 checkboxWorking();
+
+function deleteWorking() {
+    for (let i = 0; i < document.getElementsByClassName("delete").length; i++) {
+        document.getElementsByClassName("delete")[i].addEventListener('mouseover', () => {
+            document.getElementsByClassName("delete")[i].setAttribute('src', 'delete-red.png')
+            document.getElementsByClassName("delete")[i].style.width = '25px'
+            document.getElementsByClassName("delete")[i].style.height = '25px'
+        })
+        document.getElementsByClassName("delete")[i].addEventListener('mouseout', () => {
+            document.getElementsByClassName("delete")[i].setAttribute('src', 'delete.png')
+            document.getElementsByClassName("delete")[i].style.width = '20px'
+            document.getElementsByClassName("delete")[i].style.height = '20px'
+        })
+    
+        document.getElementsByClassName("delete")[i].addEventListener('click', () => {
+            document.getElementsByClassName("delete")[i].parentElement.classList.add("hide")
+            listLocal.forEach((element, index) => {
+                if (element.id === (`${document.getElementsByClassName("dayClicked")[0].textContent}${currentMonth + 1}${currentYear}` + document.getElementsByClassName("text")[i].textContent)) {
+                    listLocal[index].trash = true;
+                }
+            });
+            localStorage.setItem("todoLocal", JSON.stringify(listLocal))
+        }) 
+    }
+}
+deleteWorking();
