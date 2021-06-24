@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 20px;
+    background-color: rgb(214, 214, 214);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    border-radius: 15px;
+}
+
+#todo {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 0px;
+    background-color: rgb(231, 98, 98);
+    height: 500px;
+    /* border: 5px solid red; */
+    padding: 5px;
+}
+
+#calender {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(253, 253, 253);
+    height: 500px;
+    /* border: 5px solid rgb(0, 0, 0); */
+    /* padding: 5px; */
+}
+
+#dayClickedDiv {
+    text-align: center;
+}
+
+#dayClicked {
+    color: white;
+    font-size: 40px;
+}
+
+#inputBox {
+    /* border: 5px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#taskInput {
+    padding: 2px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 100%;
+}
+
+#addBtn {
+    color: rgb(236, 49, 2);
+    border: 0px;
+    background: white;
+    border: 1px solid rgb(236, 49, 2);
+    font-size: 18px;
+    padding: 3.5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#addBtn:hover {
+    cursor: pointer;
+    color: white;
+    border: 1px solid white;
+    background-color: rgb(236, 49, 2);
+}
+
+#taskList {
+    height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    border-bottom: 2px solid rgb(207, 73, 73);
+}
+
+.checkbox {
+    width: 15px;
+    height: 15px;
+    margin: 15px;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.text:hover {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.checkbox:hover {
+    cursor: pointer;
+}
+
+.delete {
+    float: right;
+    width: 20px;
+    height: 20px;
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
+/* calenderr */
+#calender-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+}
+
+.navs {
+    font-size: 20px;
+    border: none;
+    background: none;
+    text-align: center;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.navs:hover {
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+}
+
+hr {
+    padding: 0;
+    margin: auto;
+    height: 1.5px;
+    width: 97%;
+    border: none;
+    background-color: #666666;
+}
+
+.cell {
+    /* margin: 5px; */
+    /* border-radius: 50%; */
+    width: 4rem;
+    height: 4rem;
+    /* padding: 20px; */
+    text-align: center;
+    /* border: 2px solid black; */
+}
+
+.cell:hover {
+    transition: 0.2s;
+    /* width: 10px;
+    height: 10px; */
+    font-size: 25px;
+    /* padding: 20px; */
+    /* margin: 50px; */
+    border: 2px solid black;
+    /* background-color: rgb(77, 77, 77); */
+    /* color: white; */
+    cursor: pointer;
+}
+
+.today-bg {
+    /* border: 2px solid black; */
+    border-radius: 50%;
+    background-color: rgb(110, 116, 115);
+    color: white;
+}
+
+.days {
+    width: 4rem;
+    height: 4rem;
+    text-align: center;
+    color: rgb(112, 112, 112);
+}
+
+.dayClicked {
+    color: white;
+    background-color: black;
+}
+
+.indicatorTrue {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(81, 248, 3);
+    position: absolute;
+    margin: 1px;
+    border-radius: 50%;
+}
+
+#todayBtn {
+    /* background-color: rgb(213, 223, 223); */
+    border: 2px solid black;
+    padding: 5px;
+    font-size: 20px;
+    background: none;
+    border-radius: 5px;
+}
+
+#todayBtn:hover {
+    background-color: black;
+    cursor: pointer;
+    color: white;
+}
+
+/* scroll bar */
+::-webkit-scrollbar {
+    width: 17px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #dd2d15;
+    border-radius: 50px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff0000;
+}
+
+/* media queries */
+@media (max-width: 950px) {
+    #wrapper {
+        display: block;
+    }
+    body {
+        height: 100%;
+    }
+    #todo {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    #calender {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+@media (max-width: 340px) {
+    body {
+        font-size: 15px;
+    }
+    #todayBtn {
+        font-size: 15px;
+    }
+    #calender-nav {
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+    #calender-nav div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

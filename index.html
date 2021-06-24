@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan it Right</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="todo">
+            <div id="dayClickedDiv">
+                <span id="dayClicked"></span>
+            </div>
+            <div id="inputBox">
+                <input type="text" id="taskInput" placeholder="Add a task">
+                <button id="addBtn">Add</button>
+            </div>
+            <ul id="taskList"></ul>
+        </div>
+        <div id="calender">
+            <div id="calender-nav">
+                <div>
+                    <button id="prevMonthBtn" class="navs">&lt;</button>
+                    <span id="monthDisplay"></span>
+                    <button id="nextMonthBtn" class="navs">&gt;</button>
+                </div>
+
+                <div>
+                    <button id="todayBtn">Today</button>
+                </div>
+
+                <div>
+                    <button id="prevYearBtn" class="navs"> &lt; </button>
+                    <span id="yearDisplay"></span>
+                    <button id="nextYearBtn" class="navs"> &gt; </button>
+                </div>
+            </div>
+            <hr>
+            <div id="calender-container"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
