@@ -13,6 +13,21 @@
     <div id="container">
         <div id="heading">Plan it Right!</div>
         <div id="clock">
+            <div id="inputs">
+                <div id="clockTypeDiv"><button id="clockType">Analog Clock</button> </div>
+                <div id="inputsColor" class="hide">
+                    <div>Numbers Color: <input type="color" id="numbersColor" value="#000000"></div>
+                    <div>Background Color: <input type="color" id="bgColor" value="#ff0000"></div>
+                    <div>Hands Color: <input type="color" id="handsColor" value="#B3B3B3"></div>
+                </div>
+                <div id="inputsSize" class="hide">
+                    <div>Hour Length: <input type="range" id="hourLength" min="0" max="9" value="5"></div>
+                    <div>Minute Length: <input type="range" id="minuteLength" min="0" max="9" value="8"></div>
+                    <div>Seconds Length: <input type="range" id="secondLength" min="0" max="9" value="9"></div>
+                </div>
+            </div>
+            
+            <canvas id="canvas" width="200" height="200" class="hide"></canvas>
             <div id="clock-day"></div>
             <div id="clock-time"></div>
         </div>
@@ -34,11 +49,11 @@
                         <span id="monthDisplay"></span>
                         <button id="nextMonthBtn" class="navs">&gt;</button>
                     </div>
-    
+
                     <div>
                         <button id="todayBtn">Today</button>
                     </div>
-    
+
                     <div>
                         <button id="prevYearBtn" class="navs"> &lt; </button>
                         <span id="yearDisplay"></span>
@@ -50,6 +65,7 @@
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 

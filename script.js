@@ -40,7 +40,7 @@ if (localStorage.getItem("todoLocal") == null) {
     listLocal = JSON.parse(localStorage.getItem("todoLocal"));
 }
 
-//clock
+//clock - digital
 function currentTime() {
     today = new Date();
     var day = today.getDate();
@@ -83,6 +83,109 @@ function updateTime(k) {
     }
 }
 currentTime();
+
+//clock - analog - canvas
+var numbersColor = document.getElementById("numbersColor");
+var bgColor = document.getElementById("bgColor")
+var handsColor = document.getElementById("handsColor")
+var hourLength = document.getElementById("hourLength")
+var minuteLength = document.getElementById("minuteLength")
+var secondLength = document.getElementById("secondLength")
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.9
+setInterval(drawClock, 1000);
+
+function drawClock() {
+    drawFace(ctx, radius);
+    drawNumbers(ctx, radius);
+    drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = bgColor.value;
+    ctx.fill();
+    ctx.strokeStyle = handsColor.value;
+    ctx.lineWidth = radius * 0.05;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 0, radius * 0.05, 0, 2 * Math.PI);
+    ctx.fillStyle = numbersColor.value;
+    ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+    var ang;
+    var num;
+    ctx.font = radius * 0.15 + "px arial";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    for (num = 1; num < 13; num++) {
+        ang = num * Math.PI / 6;
+        ctx.rotate(ang);
+        ctx.translate(0, -radius * 0.85);
+        ctx.rotate(-ang);
+        ctx.fillText(num.toString(), 0, 0);
+        ctx.rotate(ang);
+        ctx.translate(0, radius * 0.85);
+        ctx.rotate(-ang);
+    }
+}
+
+function drawTime(ctx, radius) {
+    var today = new Date();
+    var hour = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    //hour
+    hour = hour % 12;
+
+    //time to angle conversion
+    hour = (hour * Math.PI / 6) + (min * Math.PI / (6 * 60)) + (sec * Math.PI / (360 * 60));
+    drawHand(ctx, hour, radius * (hourLength.value) / 10, radius * 0.07);
+
+    //minute
+    min = (min * Math.PI / 30) + (sec * Math.PI / (30 * 60));
+    drawHand(ctx, min, radius * (minuteLength.value) / 10, radius * 0.07);
+
+    // second
+    sec = (sec * Math.PI / 30);
+    drawHand(ctx, sec, radius * (secondLength.value) / 10, radius * 0.02);
+}
+
+function drawHand(ctx, angle, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0, 0);
+    ctx.rotate(angle);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-angle);
+}
+
+var clockType = document.getElementById("clockType");
+clockType.addEventListener('click', () => {
+    // console.log(clockType.innerHTML)
+    if (clockType.innerHTML == "Analog Clock") {
+        document.getElementById("canvas").classList.remove("hide")
+        document.getElementById("clock-time").classList.add("hide")
+        document.getElementById("inputsColor").classList.remove("hide")
+        document.getElementById("inputsSize").classList.remove("hide")
+        clockType.innerHTML = "Digital Clock"
+    } else if (clockType.innerHTML == "Digital Clock") {
+        document.getElementById("canvas").classList.add("hide")
+        document.getElementById("clock-time").classList.remove("hide")
+        document.getElementById("inputsColor").classList.add("hide")
+        document.getElementById("inputsSize").classList.add("hide")
+        clockType.innerHTML = "Analog Clock"
+    }
+})
 
 //calender
 function renderDate() {

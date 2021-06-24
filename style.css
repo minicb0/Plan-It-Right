@@ -45,6 +45,61 @@ body {
     border-radius: 10px;
 }
 
+#clockType {
+    color: rgb(10, 10, 10);
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(236, 49, 2);
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 10px;
+    /* margin-bottom: 10px; */
+}
+
+#clockType:hover {
+    cursor: pointer;
+    color: rgb(253, 253, 253);
+    background: rgb(236, 49, 2);
+    border: 1px solid rgb(255, 255, 255);
+    padding: 5px;
+}
+
+#clock-day {
+    border: 2px solid white;
+    margin: 3px;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+#inputs {
+    display: block;
+}
+
+#inputsColor {
+    border: 2px solid white;
+    margin: 3px;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+#inputsColor div {
+    display: block;
+    font-size: 25px;
+}
+
+#inputsSize {
+    border: 2px solid white;
+    margin: 3px;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+#inputsSize div{
+    display: block;
+    font-size: 25px;
+}
+
 #wrapper {
     display: flex;
     align-items: center;
@@ -106,7 +161,6 @@ body {
 
 #addBtn {
     color: rgb(236, 49, 2);
-    border: 0px;
     background: white;
     border: 1px solid rgb(236, 49, 2);
     font-size: 18px;
