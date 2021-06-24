@@ -7,7 +7,7 @@
 body {
     font-size: 20px;
     background-color: rgb(214, 214, 214);
-    height: 100vh;
+    height: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,6 +20,23 @@ body {
     align-items: center;
     font-size: 50px;
     margin-bottom: 30px; 
+}
+
+#settings {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+#mute {
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+#unmute {
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
 }
 
 #clock {
@@ -52,6 +69,7 @@ body {
     font-size: 18px;
     padding: 5px;
     border-radius: 10px;
+    margin-top: 3px;
     /* margin-bottom: 10px; */
 }
 
@@ -367,11 +385,13 @@ hr {
     #clock {
         display: block;
     }
-    #clock div {
+    #canvasDiv {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0px;
+    }
+    #clock-time, #clock-day {
+        margin-bottom: 0px;
     }
 }
 

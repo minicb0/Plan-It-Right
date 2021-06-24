@@ -32,6 +32,10 @@ var taskInput = document.getElementById("taskInput")
 var addBtn = document.getElementById("addBtn")
 var taskList = document.getElementById("taskList")
 
+//sounds
+var taskDoneSound = document.getElementById("taskDoneSound");
+var deleteSound = document.getElementById("deleteSound");
+
 //local Storage
 var listLocal;
 if (localStorage.getItem("todoLocal") == null) {
@@ -341,7 +345,7 @@ function loadList() {
                 `<div class="itemDiv"><li class="item ${trash}">
             <input type="checkbox" class="checkbox" ${checked}>
             <span class="text ${completed}">${task}</span>
-            <img class="delete" src="delete.png">
+            <img class="delete" src="./assets/images/delete.png">
             </li></div>`;
 
             taskList.insertAdjacentHTML('beforeend', item);
@@ -369,13 +373,14 @@ indicatorFunc();
 addBtn.addEventListener('click', () => {
     if (taskInput.value == "") {
     } else {
+        taskDoneSound.play();
         var task = taskInput.value
         // console.log(task);
         var item =
             `<div class="itemDiv"><li class="item">
             <input type="checkbox" class="checkbox">
             <span class="text">${task}</span>
-            <img class="delete" src="delete.png">
+            <img class="delete" src="./assets/images/delete.png">
             </li></div>`;
 
         taskList.insertAdjacentHTML('beforeend', item);
@@ -399,13 +404,14 @@ document.addEventListener("keyup", function (event) {
     if (taskInput.value == "") {
     } else {
         if (event.keyCode == 13) {
+            taskDoneSound.play();
             var task = taskInput.value
             // console.log(task);
             var item =
                 `<div class="itemDiv"><li class="item">
             <input type="checkbox" class="checkbox">
             <span class="text">${task}</span>
-            <img class="delete" src="delete.png">
+            <img class="delete" src="./assets/images/delete.png">
             </li></div>`;
 
             taskList.insertAdjacentHTML('beforeend', item);
@@ -429,6 +435,7 @@ document.addEventListener("keyup", function (event) {
 function checkboxWorking() {
     for (let i = 0; i < document.getElementsByClassName("checkbox").length; i++) {
         document.getElementsByClassName("checkbox")[i].addEventListener('click', () => {
+            taskDoneSound.play();
             if (document.getElementsByClassName("checkbox")[i].checked) {
                 // console.log("true")
                 document.getElementsByClassName("text")[i].classList.add("completed")
@@ -459,17 +466,18 @@ checkboxWorking();
 function deleteWorking() {
     for (let i = 0; i < document.getElementsByClassName("delete").length; i++) {
         document.getElementsByClassName("delete")[i].addEventListener('mouseover', () => {
-            document.getElementsByClassName("delete")[i].setAttribute('src', 'delete-red.png')
+            document.getElementsByClassName("delete")[i].setAttribute('src', './assets/images/delete-red.png')
             document.getElementsByClassName("delete")[i].style.width = '25px'
             document.getElementsByClassName("delete")[i].style.height = '25px'
         })
         document.getElementsByClassName("delete")[i].addEventListener('mouseout', () => {
-            document.getElementsByClassName("delete")[i].setAttribute('src', 'delete.png')
+            document.getElementsByClassName("delete")[i].setAttribute('src', './assets/images/delete.png')
             document.getElementsByClassName("delete")[i].style.width = '20px'
             document.getElementsByClassName("delete")[i].style.height = '20px'
         })
 
         document.getElementsByClassName("delete")[i].addEventListener('click', () => {
+            deleteSound.play();
             document.getElementsByClassName("delete")[i].parentElement.classList.add("hide")
             listLocal.forEach((element, index) => {
                 if (element.id === (`${document.getElementsByClassName("dayClicked")[0].textContent}${currentMonth + 1}${currentYear}` + document.getElementsByClassName("text")[i].textContent)) {
@@ -481,3 +489,20 @@ function deleteWorking() {
     }
 }
 deleteWorking();
+
+//sounds 
+var unmute = document.getElementById("unmute");
+var mute = document.getElementById("mute")
+unmute.addEventListener('click', () => {
+    mute.classList.remove("hide")
+    unmute.classList.add("hide")
+    taskDoneSound.muted = true;
+    deleteSound.muted = true;
+})
+mute.addEventListener('click', () => {
+    mute.classList.add("hide")
+    unmute.classList.remove("hide")
+    taskDoneSound.muted = false;
+    taskDoneSound.play();
+    deleteSound.muted = false;
+})

@@ -10,11 +10,17 @@
 </head>
 
 <body>
+    <audio id="taskDoneSound" src="./assets/audio/tap.wav"></audio>
+    <audio id="deleteSound" src="./assets/audio/delete.mp3"></audio>
     <div id="container">
         <div id="heading">Plan it Right!</div>
         <div id="clock">
             <div id="inputs">
-                <div id="clockTypeDiv"><button id="clockType">Analog Clock</button> </div>
+                <div id="settings">
+                    <button id="clockType">Analog Clock</button>
+                    <img src="./assets/images/mute.png" id="mute" class="hide">
+                    <img src="./assets/images/unmute.png" id="unmute">
+                </div>
                 <div id="inputsColor" class="hide">
                     <div>Numbers Color: <input type="color" id="numbersColor" value="#000000"></div>
                     <div>Background Color: <input type="color" id="bgColor" value="#ff0000"></div>
@@ -27,7 +33,7 @@
                 </div>
             </div>
             
-            <canvas id="canvas" width="200" height="200" class="hide"></canvas>
+            <div id="canvasDiv"><canvas id="canvas" width="200" height="200" class="hide"></canvas></div>
             <div id="clock-day"></div>
             <div id="clock-time"></div>
         </div>
