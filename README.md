@@ -13,6 +13,13 @@ Create a Schedule Planning website that contains a calendar, a clock and a list 
 - [ ] Multiple user functionality should be present. Make sure the different users have their data stored separately and shown correctly on the Website.
 - [x] The Clock should have additional user interactivity. Add sound effects, options to change colour, dimensions of the clock hands as per user's input, etc. Add an option for the user to modify the clock timing as well. (Customisation)
 
+## Additional Features:
+- [x] Each day have a seperate task list and is displayed accordingly based on which date the user clicked.
+- [x] Responsive Website using media Queries.
+- [x] Each Task can be marked as Completed or Pending and the same will be saved to Local Storage and displayed accordingly.
+- [x] An Indicator or a ping is displayed near the date, if there's a task mentioned on that date.
+- [x] Image-btn to mute or unmute all the sounds.
+
 ## Git
 - [x] Use git bash or command-line interface instead of git website for making commits.
 - [x] Work on a new repository for the project.
