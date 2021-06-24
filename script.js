@@ -40,6 +40,51 @@ if (localStorage.getItem("todoLocal") == null) {
     listLocal = JSON.parse(localStorage.getItem("todoLocal"));
 }
 
+//clock
+function currentTime() {
+    today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth();
+    var year = today.getFullYear();
+
+    var hour = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    var midday;
+    //Assigning AM/PM
+    if (hour > 11) {
+        midday = "PM"
+    } else {
+        midday = "AM"
+    }
+
+    //Making a 12 hour format clock
+    if (hour == 0) {
+        hour = 12;
+    } else if (hour > 12) {
+        hour = hour - 12
+    } else {
+        hour = hour;
+    }
+
+    hour = updateTime(hour);
+    min = updateTime(min);
+    sec = updateTime(sec);
+    document.getElementById("clock-day").innerHTML = "Today - " + day + " " + monthList[month] + " " + year;
+    document.getElementById("clock-time").innerHTML = "Time - " + hour + ":" + min + ":" + sec + " " + midday;
+    setTimeout(currentTime, 1000); /* setting timer */
+}
+function updateTime(k) {
+    if (k < 10) {
+        return "0" + k;
+    }
+    else {
+        return k;
+    }
+}
+currentTime();
+
+//calender
 function renderDate() {
     if (currentMonth === 12) {
         currentYear = currentYear + 1;
@@ -190,7 +235,7 @@ function loadList() {
                 trash = ""
             }
             var item =
-            `<div class="itemDiv"><li class="item ${trash}">
+                `<div class="itemDiv"><li class="item ${trash}">
             <input type="checkbox" class="checkbox" ${checked}>
             <span class="text ${completed}">${task}</span>
             <img class="delete" src="delete.png">
@@ -198,7 +243,7 @@ function loadList() {
 
             taskList.insertAdjacentHTML('beforeend', item);
             taskInput.value = ""
-            
+
         }
     }
     indicatorFunc();
@@ -254,7 +299,7 @@ document.addEventListener("keyup", function (event) {
             var task = taskInput.value
             // console.log(task);
             var item =
-            `<div class="itemDiv"><li class="item">
+                `<div class="itemDiv"><li class="item">
             <input type="checkbox" class="checkbox">
             <span class="text">${task}</span>
             <img class="delete" src="delete.png">
@@ -320,7 +365,7 @@ function deleteWorking() {
             document.getElementsByClassName("delete")[i].style.width = '20px'
             document.getElementsByClassName("delete")[i].style.height = '20px'
         })
-    
+
         document.getElementsByClassName("delete")[i].addEventListener('click', () => {
             document.getElementsByClassName("delete")[i].parentElement.classList.add("hide")
             listLocal.forEach((element, index) => {
@@ -329,7 +374,7 @@ function deleteWorking() {
                 }
             });
             localStorage.setItem("todoLocal", JSON.stringify(listLocal))
-        }) 
+        })
     }
 }
 deleteWorking();

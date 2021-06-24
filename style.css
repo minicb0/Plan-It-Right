@@ -14,29 +14,65 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    margin-bottom: 30px; 
+}
+
+#clock {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 5px solid black;
+    border-bottom: 0px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 30px;
+    color: #ffebeb;
+    background-color: rgb(250, 101, 101);
+    /* padding: 10px; */
+}
+
+#clock-time {
+    border: 2px solid white;
+    margin: 3px;
+    padding: 3px;
+    border-radius: 10px;
+}
+
 #wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     border: 5px solid black;
-    border-radius: 15px;
-    margin: 3px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    /* margin: 3px; */
+    margin-top: 0px;
 }
 
 #todo {
-    border-top-left-radius: 10px;
+    border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 0px;
     background-color: rgb(247, 146, 146);
     height: 500px;
+    width: 460px;
     /* border: 5px solid red; */
     padding: 5px;
 }
 
 #calender {
     border-top-left-radius: 0px;
-    border-top-right-radius: 10px;
+    border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 10px;
     background-color: rgb(253, 253, 253);
@@ -51,7 +87,7 @@ body {
 
 #dayClicked {
     color: white;
-    font-size: 40px;
+    font-size: 25px;
 }
 
 #inputBox {
@@ -262,8 +298,9 @@ hr {
         height: 100%;
     }
     #todo {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        width: auto;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
     }
@@ -273,9 +310,25 @@ hr {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
     }
+    #clock {
+        display: block;
+    }
+    #clock div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+    }
 }
 
-@media (max-width: 340px) {
+@media (max-width: 475px) {
+    .indicatorTrue{
+        width: 7px;
+        height: 7px;
+    }
+}
+
+@media (max-width: 345px) {
     body {
         font-size: 15px;
     }
@@ -291,5 +344,18 @@ hr {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    #heading{
+        font-size: 35px;
+    }
+    #clock {
+        font-size: 25px;
+    }
+    #dayClicked{
+        font-size: 20px;
+    }
+    .indicatorTrue{
+        width: 5px;
+        height: 5px;
     }
 }

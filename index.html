@@ -10,37 +10,44 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        <div id="todo">
-            <div id="dayClickedDiv">
-                <span id="dayClicked"></span>
-            </div>
-            <div id="inputBox">
-                <input type="text" id="taskInput" placeholder="Add a task">
-                <button id="addBtn">Add</button>
-            </div>
-            <ul id="taskList"></ul>
+    <div id="container">
+        <div id="heading">Plan it Right!</div>
+        <div id="clock">
+            <div id="clock-day"></div>
+            <div id="clock-time"></div>
         </div>
-        <div id="calender">
-            <div id="calender-nav">
-                <div>
-                    <button id="prevMonthBtn" class="navs">&lt;</button>
-                    <span id="monthDisplay"></span>
-                    <button id="nextMonthBtn" class="navs">&gt;</button>
+        <div id="wrapper">
+            <div id="todo">
+                <div id="dayClickedDiv">
+                    <span id="dayClicked"></span>
                 </div>
-
-                <div>
-                    <button id="todayBtn">Today</button>
+                <div id="inputBox">
+                    <input type="text" id="taskInput" placeholder="Add a task">
+                    <button id="addBtn">Add</button>
                 </div>
-
-                <div>
-                    <button id="prevYearBtn" class="navs"> &lt; </button>
-                    <span id="yearDisplay"></span>
-                    <button id="nextYearBtn" class="navs"> &gt; </button>
-                </div>
+                <ul id="taskList"></ul>
             </div>
-            <hr>
-            <div id="calender-container"></div>
+            <div id="calender">
+                <div id="calender-nav">
+                    <div>
+                        <button id="prevMonthBtn" class="navs">&lt;</button>
+                        <span id="monthDisplay"></span>
+                        <button id="nextMonthBtn" class="navs">&gt;</button>
+                    </div>
+    
+                    <div>
+                        <button id="todayBtn">Today</button>
+                    </div>
+    
+                    <div>
+                        <button id="prevYearBtn" class="navs"> &lt; </button>
+                        <span id="yearDisplay"></span>
+                        <button id="nextYearBtn" class="navs"> &gt; </button>
+                    </div>
+                </div>
+                <hr>
+                <div id="calender-container"></div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
